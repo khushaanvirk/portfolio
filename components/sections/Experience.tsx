@@ -3,7 +3,7 @@ import TimelineItem from "@/components/ui/TimelineItem";
 
 const experience = [
   {
-    role: "AI Automation Engineer",
+    role: "Software Engineer",
     company: "Visurae (Co-founder)",
     period: "Dec 2025 – Present",
     bullets: [
@@ -13,7 +13,7 @@ const experience = [
     ],
   },
   {
-    role: "Automation Engineer",
+    role: "Software Engineer",
     company: "Advizr",
     period: "Jul 2025 – Present",
     bullets: [
