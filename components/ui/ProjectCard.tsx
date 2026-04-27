@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { TiltCard } from "@/components/ui/tilt-card";
 
 interface ProjectCardProps {
   title: string;
@@ -10,6 +10,9 @@ interface ProjectCardProps {
   tags: string[];
   image: string;
   index: number;
+  videoUrl?: string;
+  videoSrc?: string;
+  poster?: string;
 }
 
 export default function ProjectCard({
@@ -18,36 +21,52 @@ export default function ProjectCard({
   tags,
   image,
   index,
+  videoUrl,
+  videoSrc,
+  poster,
 }: ProjectCardProps) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ y: -4 }}
-      className="group relative bg-[#141414] border border-[#1F1F1F] rounded-xl transition-all duration-300"
-    >
-      <GlowingEffect
-        spread={40}
-        glow={false}
-        disabled={false}
-        proximity={64}
-        inactiveZone={0.01}
-        borderWidth={2}
-      />
-
-      {/* Project image */}
-      <div className="relative w-full h-48 overflow-hidden bg-[#0A0A0A] rounded-t-xl">
-        <Image
-          src={image}
-          alt={title}
-          fill
-          unoptimized={image.endsWith(".svg")}
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
-          sizes="(max-width: 768px) 100vw, 50vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#141414]/60 to-transparent" />
+  const cardInner = (
+    <TiltCard className="h-full bg-[#141414] border border-[#1F1F1F] rounded-xl overflow-hidden">
+      {/* Project media */}
+      <div className="relative w-full h-56 overflow-hidden bg-[#0A0A0A]">
+        {videoSrc ? (
+          <video
+            src={videoSrc}
+            poster={poster}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            className="absolute inset-0 w-full h-full object-contain p-2"
+          />
+        ) : (
+          <>
+            <Image
+              src={image}
+              alt={title}
+              fill
+              unoptimized={image.endsWith(".svg")}
+              className="object-contain p-2"
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+            {videoUrl && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors">
+                <div className="w-14 h-14 rounded-full bg-white/95 flex items-center justify-center shadow-lg">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="#141414"
+                    className="ml-1"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+              </div>
+            )}
+          </>
+        )}
       </div>
 
       {/* Card content */}
@@ -67,6 +86,29 @@ export default function ProjectCard({
           ))}
         </div>
       </div>
+    </TiltCard>
+  );
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="group h-full"
+    >
+      {videoUrl ? (
+        <a
+          href={videoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block h-full"
+        >
+          {cardInner}
+        </a>
+      ) : (
+        cardInner
+      )}
     </motion.div>
   );
 }

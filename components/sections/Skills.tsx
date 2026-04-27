@@ -3,47 +3,36 @@ import SkillGroup from "@/components/ui/SkillGroup";
 
 const skillGroups = [
   {
-    label: "Embedded & Digital Systems",
+    label: "Embedded & Control Systems",
     skills: [
-      "8051 Microcontroller",
-      "RISC-V",
+      "8051 (N76E003, EFM8LB1, CV-8052)",
+      "ARM (STM32)",
       "FPGA",
-      "ADC",
-      "Interrupt-driven Systems",
-      "Serial Communication",
-      "Real-time Control",
+      "ADC/DAC",
+      "I²C",
+      "SPI",
+      "UART",
+      "PWM",
     ],
   },
   {
     label: "Programming",
-    skills: ["C", "C++", "Embedded C", "Assembly", "SystemVerilog", "Python", "Arduino"],
+    skills: ["C", "Embedded C", "Assembly (8051)", "Python", "SQL", "SystemVerilog"],
   },
   {
-    label: "CAD & Design",
-    skills: ["KiCad", "EasyEDA", "AutoCAD", "MATLAB", "Gerber Files", "Schematic Capture", "PCB Layout"],
-  },
-  {
-    label: "Hardware & Testing",
+    label: "Instrumentation & Hardware",
     skills: [
       "Oscilloscope",
       "Multimeter",
       "Soldering",
-      "Breadboarding",
-      "PCB Routing",
-      "DRC Verification",
       "Signal Conditioning",
+      "Op-Amp Design",
+      "PCB Layout",
     ],
   },
   {
-    label: "AI & Automation",
-    skills: [
-      "LLM Workflows",
-      "Prompt Engineering",
-      "API Orchestration",
-      "Agentic Pipelines",
-      "Data Ingestion",
-      "Workflow Automation",
-    ],
+    label: "Tools & Software",
+    skills: ["Git", "KiCad", "EasyEDA", "MATLAB", "PuTTY", "CrossIDE"],
   },
 ];
 

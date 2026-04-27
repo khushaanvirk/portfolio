@@ -4,32 +4,23 @@ import TimelineItem from "@/components/ui/TimelineItem";
 const experience = [
   {
     role: "Software Engineer",
-    company: "Visurae (Co-founder)",
-    period: "Dec 2025 – Present",
-    bullets: [
-      "Designed AI-powered automation workflows for lead generation and outbound outreach.",
-      "Integrated data ingestion, prompt engineering, and decision logic into end-to-end production systems.",
-      "Collaborated with co-founders to evaluate performance, reliability, and scalability of deployed systems.",
-    ],
-  },
-  {
-    role: "Software Engineer",
     company: "Advizr",
-    period: "Jul 2025 – Present",
+    period: "Jan 2026 – Present",
     bullets: [
-      "Developed AI-driven workflow automations reducing manual client operations by 30%.",
-      "Translated stakeholder needs into technical requirements and implementation plans.",
-      "Coordinated cross-functional execution across engineering, operations, and client teams.",
+      "Designed and shipped end-to-end Python automation systems for clients, including web scraping, REST API integrations, SQL storage, and automated email pipelines, working from open-ended goals rather than fixed specs.",
+      "Picked up new libraries and APIs on a per-project basis by reading documentation directly, applying the same approach used to learn microcontroller peripherals from datasheets.",
+      "Diagnosed production issues in deployed client systems by reproducing failures locally, isolating the root cause, and verifying fixes before redeployment.",
+      "Maintained client systems across ongoing change requests using Git for version control, balancing new feature work against keeping existing deployments stable.",
     ],
   },
   {
-    role: "Sports Instructor & Camp Leader",
+    role: "Sports Instructor / Summer Camp Leader",
     company: "City of Surrey",
     period: "Sep 2023 – Sep 2025",
     bullets: [
-      "Promoted to supervisor; led a team of volunteers and instructors running summer camps.",
-      "Delivered structured programs for ages 3–12, maintaining safety standards and incident documentation.",
-      "Mentored new volunteers and built an inclusive, high-energy team environment.",
+      "Led structured programs for groups of 15–30, coordinating daily operations across staff and volunteers while maintaining safety standards.",
+      "Adapted instruction in real time to participants of varying skill levels, communicating clear expectations to children, parents, and co-instructors while resolving conflicts and incidents on the spot.",
+      "Managed concurrent daily responsibilities including equipment setup, attendance tracking, lesson delivery, and end-of-day reporting under fixed program schedules.",
     ],
   },
 ];

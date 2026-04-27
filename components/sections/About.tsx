@@ -48,11 +48,11 @@ export default function About() {
             >
               I&apos;m a second-year Electrical Engineering student at UBC with
               hands-on experience in embedded systems, PCB design, and
-              hardware-software integration. Outside of academics I&apos;m an
-              AI Automation Engineer and co-founder at Visurae, and an
-              Automation Engineer at Advizr, where I build AI-powered workflow
-              systems. I&apos;m driven by the challenge of turning low-level
-              hardware into real-world solutions.
+              hardware-software integration. Outside of academics I&apos;m a
+              Software Engineer at Advizr, where I design and ship end-to-end
+              Python automation systems for clients. I&apos;m driven by the
+              challenge of turning low-level hardware into real-world
+              solutions.
             </motion.p>
 
             <motion.div
