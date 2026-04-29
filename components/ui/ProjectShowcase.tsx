@@ -66,7 +66,7 @@ export default function ProjectShowcase({ project }: Props) {
                   unoptimized={previewSrc.endsWith(".svg")}
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 60vw"
-                  priority={false}
+                  loading="eager"
                 />
               )}
             </div>
