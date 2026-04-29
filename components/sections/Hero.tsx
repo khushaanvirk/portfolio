@@ -1,95 +1,92 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { Card } from "@/components/ui/card";
-import { Spotlight } from "@/components/ui/spotlight";
-import { SplineScene } from "@/components/ui/splite";
-import { GlowingEffect } from "@/components/ui/glowing-effect";
+import ShaderBackground from "@/components/ui/shader-background";
 
-const btnBase = "px-6 py-3 text-sm font-medium rounded-md transition-colors duration-200 cursor-pointer w-full border border-[#333333] hover:border-[#737373] text-[#F5F5F5]";
+const links = [
+  { label: "Resume", href: "/resume.pdf", download: "Khushaan_Virk_Resume.pdf" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/khushaan-virk", external: true },
+  { label: "Email", href: "#contact" },
+];
 
 export default function Hero() {
-  const scrollTo = (id: string) => {
-    document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <section className="min-h-screen flex flex-col justify-center px-6 pt-16 relative">
-      <div className="max-w-5xl mx-auto w-full">
-        <Card className="w-full h-[500px] md:h-[560px] bg-[#0D0D0D] relative overflow-hidden border-[#1F1F1F]">
-          <Spotlight size={300} />
-
-          <div className="flex h-full">
-            {/* Left: text content */}
-            <div className="flex-1 p-8 md:p-12 relative z-10 flex flex-col justify-center">
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-                className="text-5xl sm:text-6xl md:text-7xl font-bold text-[#F5F5F5] tracking-tight leading-none"
-              >
-                Khushaan
-                <br />
-                Virk
-              </motion.h1>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-                className="mt-5 text-base text-[#737373] max-w-xs"
-              >
-                Electrical Engineering Student at UBC
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-                className="mt-8 flex flex-col sm:flex-row flex-wrap gap-3"
-              >
-                <div className="relative rounded-md">
-                  <GlowingEffect spread={30} glow={false} disabled={false} proximity={60} inactiveZone={0.01} borderWidth={1.5} />
-                  <button onClick={() => scrollTo("#projects")} className={btnBase}>
-                    View Projects
-                  </button>
-                </div>
-                <div className="relative rounded-md">
-                  <GlowingEffect spread={30} glow={false} disabled={false} proximity={60} inactiveZone={0.01} borderWidth={1.5} />
-                  <button onClick={() => scrollTo("#contact")} className={btnBase}>
-                    Get in Touch
-                  </button>
-                </div>
-                <div className="relative rounded-md">
-                  <GlowingEffect spread={30} glow={false} disabled={false} proximity={60} inactiveZone={0.01} borderWidth={1.5} />
-                  <a href="/resume.pdf" download="Khushaan_Virk_Resume.pdf" className={btnBase + " block text-center"}>
-                    Resume ↓
-                  </a>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Right: Spline 3D scene */}
-            <div className="flex-1 relative hidden md:block">
-              <SplineScene
-                scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-                className="w-full h-full"
-              />
-            </div>
+    <section className="relative min-h-[80vh] md:min-h-[75vh] flex items-end px-6 pt-16 pb-12 overflow-hidden">
+      <ShaderBackground className="absolute inset-0 w-full h-full opacity-60 print:hidden" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/30 via-transparent to-[#0A0A0A] pointer-events-none print:hidden"
+      />
+      <div className="relative max-w-4xl mx-auto w-full flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="shrink-0"
+        >
+          <div className="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border border-[#1F1F1F] shadow-2xl">
+            <Image
+              src="/headshot.jpg"
+              alt="Khushaan Virk"
+              width={192}
+              height={192}
+              className="object-cover w-full h-full"
+              priority
+            />
           </div>
-        </Card>
-      </div>
+        </motion.div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <span className="text-[#737373] text-xs font-mono tracking-widest">scroll</span>
-        <div className="w-px h-10 bg-gradient-to-b from-[#737373] to-transparent" />
-      </motion.div>
+        <div className="flex-1">
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.05, ease: "easeOut" }}
+            className="text-[#F5F5F5] text-4xl md:text-5xl font-semibold tracking-tight"
+          >
+            Khushaan Virk
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+            className="text-[#A3A3A3] text-base md:text-lg mt-3 font-mono"
+          >
+            Electrical Engineering @ UBC
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.15, ease: "easeOut" }}
+            className="text-[#737373] text-sm mt-2"
+          >
+            Vancouver, BC
+          </motion.p>
+
+          <motion.nav
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+            aria-label="Profile links"
+            className="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-sm font-mono"
+          >
+            {links.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noopener noreferrer" : undefined}
+                download={link.download}
+                className="text-[#A3A3A3] hover:text-[#F5F5F5] underline decoration-[#1F1F1F] underline-offset-4 hover:decoration-[#737373] transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+          </motion.nav>
+        </div>
+      </div>
     </section>
   );
 }

@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://khushaanvirk.com"),
   title: "Khushaan Virk",
   description:
     "Electrical Engineering student at UBC. Embedded systems, PCB design, and hardware-software integration.",

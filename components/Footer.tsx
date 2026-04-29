@@ -7,12 +7,6 @@ export default function Footer() {
         </p>
         <div className="flex items-center gap-6">
           <a
-            href="mailto:khushaanvirk@gmail.com"
-            className="text-[#737373] hover:text-[#F5F5F5] text-sm transition-colors duration-200"
-          >
-            Email
-          </a>
-          <a
             href="https://www.linkedin.com/in/khushaan-virk/"
             target="_blank"
             rel="noopener noreferrer"

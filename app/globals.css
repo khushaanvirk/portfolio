@@ -43,3 +43,94 @@ body {
   background: #3B82F6;
   color: #F5F5F5;
 }
+
+/* -------------------------------------------------------------------------
+ * Print styles — used for "Save as PDF" of project detail pages.
+ * Goal: turn each /projects/<slug> page into a clean, ink-friendly engineering
+ * document. Hides chrome, switches to light theme, expands media to full size,
+ * and forces sensible page breaks.
+ * ------------------------------------------------------------------------- */
+@media print {
+  html,
+  body {
+    background: #ffffff !important;
+    color: #111111 !important;
+  }
+
+  /* Hide site chrome and any explicitly print:hidden elements */
+  nav,
+  footer,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* Videos can't render in PDF; hide them and let posters / images carry the page */
+  video {
+    display: none !important;
+  }
+
+  /* Sticky project header should sit naturally on the page when printing */
+  .sticky {
+    position: static !important;
+    backdrop-filter: none !important;
+  }
+
+  /* Card surfaces should print as plain framed boxes, not dark panels */
+  .bg-\[\#141414\],
+  .bg-\[\#0A0A0A\],
+  .bg-\[\#0D0D0D\] {
+    background: #ffffff !important;
+    border-color: rgba(0, 0, 0, 0.25) !important;
+  }
+
+  /* Borders */
+  .border-\[\#1F1F1F\],
+  .border-\[\#333333\] {
+    border-color: rgba(0, 0, 0, 0.25) !important;
+  }
+
+  /* Text: muted greys collapse to readable greys; whites become near-black */
+  .text-\[\#F5F5F5\],
+  .text-\[\#D4D4D4\],
+  .text-\[\#A3A3A3\] {
+    color: #111111 !important;
+  }
+  .text-\[\#737373\],
+  .text-\[\#404040\] {
+    color: #555555 !important;
+  }
+
+  /* Show URLs after external links so the printout is self-contained */
+  a[href^="http"]::after,
+  a[href^="mailto:"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    color: #555555;
+    word-break: break-all;
+  }
+
+  /* Each major section in a project page starts on a new page */
+  article > main > section {
+    page-break-inside: avoid;
+  }
+  article > main > section + section {
+    page-break-before: always;
+  }
+
+  /* Avoid orphaned figure captions */
+  figure {
+    page-break-inside: avoid;
+  }
+
+  /* Code blocks: make them readable on paper */
+  pre {
+    white-space: pre-wrap !important;
+    word-break: break-word;
+    page-break-inside: avoid;
+  }
+
+  /* Page margins */
+  @page {
+    margin: 18mm 16mm;
+  }
+}
