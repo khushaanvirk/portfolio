@@ -16,7 +16,7 @@ export default function ProjectHero({ hero }: Props) {
           <span className="font-mono text-xs uppercase tracking-widest text-[#A3A3A3] mb-2">
             Hero media pending
           </span>
-          <span className="text-xs font-mono italic max-w-md">{hero.src}</span>
+          <span className="text-xs font-mono italic max-w-md">{hero.alt}</span>
         </div>
       ) : hero.type === "video" ? (
         <video

@@ -33,6 +33,8 @@ export interface ProjectContent {
   oneLineSummary: string;
   dates: string;
   status?: string;
+  /** Short highlight badge rendered as an accent pill on the homepage card and detail header, e.g. "Currently building". */
+  badge?: string;
   role?: string;
   tags: string[];
   hero: {

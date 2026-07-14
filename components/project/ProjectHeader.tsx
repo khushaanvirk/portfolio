@@ -1,4 +1,5 @@
 import Link from "next/link";
+import StatusBadge from "@/components/ui/StatusBadge";
 import type { ProjectContent } from "@/content/projects/types";
 
 interface Props {
@@ -21,9 +22,14 @@ export default function ProjectHeader({ project }: Props) {
         </Link>
         <div className="mt-2 flex flex-col md:flex-row md:items-end md:justify-between gap-3">
           <div>
-            <h1 className="text-[#F5F5F5] text-2xl md:text-3xl font-semibold tracking-tight print:text-black">
-              {project.title}
-            </h1>
+            <div className="flex items-center gap-3 flex-wrap">
+              <h1 className="text-[#F5F5F5] text-2xl md:text-3xl font-semibold tracking-tight print:text-black">
+                {project.title}
+              </h1>
+              {project.badge && (
+                <StatusBadge label={project.badge} className="print:hidden" />
+              )}
+            </div>
             {meta && (
               <p className="text-[#737373] text-xs font-mono mt-1 print:text-black/60">
                 {meta}
