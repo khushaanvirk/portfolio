@@ -109,5 +109,10 @@ ENDMAC`,
     "Sharing Timer 0 between the system tick and the speaker required careful ISR mode switching. Early revisions accidentally re-entered the audio path during the timer tick and lost real-time accuracy.",
     "Interrupts had to be temporarily disabled around any call into the integer math library; missing this caused intermittent ADC corruption that took several hours to track down.",
   ],
-  resources: [],
+  resources: [
+    {
+      label: "Team firmware repository (GitHub)",
+      href: "https://github.com/ELEC-291-2026/Project1.0",
+    },
+  ],
 };

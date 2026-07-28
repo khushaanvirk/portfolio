@@ -144,5 +144,10 @@ drift = np.hypot(x[-1], y[-1])`,
     "Run B contains a genuine ~15 s mid-walk pause. It shows up as an amplitude dip, and the step detector correctly finds no peaks there — worth verifying rather than filtering out, since a detector that invented steps during a pause would be silently broken everywhere else.",
     "The derived 0.5 m step length was the thread that unravelled the first conclusion. Taking a suspiciously short number seriously — instead of assuming a plausible stride and moving on — is what exposed the peak-detector over-count and corrected the error attribution from heading-only to heading plus distance.",
   ],
-  resources: [],
+  resources: [
+    {
+      label: "Source, raw data, and notebook (GitHub)",
+      href: "https://github.com/khushaanvirk/pedestrian-dead-reckoning",
+    },
+  ],
 };

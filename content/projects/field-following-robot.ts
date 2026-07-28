@@ -152,5 +152,9 @@ export const fieldFollowingRobot: ProjectContent = {
       label: "Group demonstration video (YouTube)",
       href: "https://www.youtube.com/watch?v=U5jY5kz8_YE",
     },
+    {
+      label: "Team firmware repository (GitHub)",
+      href: "https://github.com/ELEC-291-2026/Project2.0",
+    },
   ],
 };
