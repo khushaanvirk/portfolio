@@ -35,6 +35,13 @@ export interface ProjectContent {
   status?: string;
   /** Short highlight badge rendered as an accent pill on the homepage card and detail header, e.g. "Currently building". */
   badge?: string;
+  /**
+   * Marks the project rendered as the large card at the top of the homepage
+   * Projects section. Deliberately independent of `projectOrder` so the
+   * highlighted project doesn't have to be the most recent one. Set it on
+   * exactly one project; the first project is used as a fallback.
+   */
+  featured?: boolean;
   role?: string;
   tags: string[];
   hero: {

@@ -101,6 +101,15 @@ export default function ProjectCard({
 
               {/* Content */}
               <div className="p-7 md:p-10 flex flex-col gap-5">
+                {/* Names why this card is the large one — the featured slot is
+                    a deliberate pick, not just whichever project is newest. */}
+                <div className="flex items-center gap-3">
+                  <span className="text-[#F5F5F5] text-[10px] font-mono uppercase tracking-widest whitespace-nowrap">
+                    Featured project
+                  </span>
+                  <span aria-hidden className="h-px flex-1 bg-[#1F1F1F]" />
+                </div>
+
                 {project.badge && <StatusBadge label={project.badge} />}
 
                 <p className="text-[#737373] text-xs font-mono uppercase tracking-widest">

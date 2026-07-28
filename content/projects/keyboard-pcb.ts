@@ -8,6 +8,7 @@ export const keyboardPcb: ProjectContent = {
   dates: "Jun 2026 – Present",
   status: "In progress",
   badge: "Currently building",
+  featured: true,
   role: "Personal project",
   tags: ["Altium", "STM32", "USB-C", "4-Layer", "Impedance Control", "QMK"],
   hero: {

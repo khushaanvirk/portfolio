@@ -21,10 +21,12 @@ export const projectsBySlug: Record<string, ProjectContent> = {
   [capacitanceMeters.slug]: capacitanceMeters,
 };
 
-// Display order on the homepage project list.
+// Curated display order — not strictly chronological. The featured project is
+// lifted out of this list into the large card, so the first entry that isn't
+// featured leads the compact grid.
 export const projectOrder: string[] = [
-  pedestrianDeadReckoning.slug,
   keyboardPcb.slug,
+  pedestrianDeadReckoning.slug,
   reflowOvenController.slug,
   fieldFollowingRobot.slug,
   batteryTempMonitorPcb.slug,
@@ -36,6 +38,18 @@ export const projectOrder: string[] = [
 
 export const allProjects: ProjectContent[] = projectOrder.map(
   (slug) => projectsBySlug[slug]
+);
+
+// The large card at the top of the Projects section. Resolved from the
+// `featured` flag rather than list position, so highlighting a project is a
+// deliberate choice instead of a side effect of reordering. Falls back to the
+// first project if nothing is flagged.
+export const featuredProject: ProjectContent =
+  allProjects.find((project) => project.featured) ?? allProjects[0];
+
+// Everything else, in display order, rendered as the compact grid below it.
+export const gridProjects: ProjectContent[] = allProjects.filter(
+  (project) => project !== featuredProject
 );
 
 export type { ProjectContent } from "./types";
