@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# khushaanvirk.com
 
-## Getting Started
+Personal portfolio site — [khushaanvirk.com](https://khushaanvirk.com)
 
-First, run the development server:
+Project-first: a hero, a projects section, and a contact form, with a full detail page behind every project. Built for hardware and embedded work, where the interesting artifacts are schematics, oscilloscope traces, and drift plots rather than screenshots.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+**Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS v4 · framer-motion**
+
+## The idea
+
+Projects are **data, not JSX**. Each one is a single typed object:
+
+```ts
+export const pedestrianDeadReckoning: ProjectContent = {
+  slug: "pedestrian-dead-reckoning",
+  title: "Pedestrian Dead Reckoning (Phone IMU)",
+  tags: ["Python", "NumPy", "SciPy", "Signal processing"],
+  specs: [{ label: "Run A result", value: "150 steps · drift 5.14 m (6.7 %)" }],
+  sections: [{ heading: "Step detection", body: [...], code: {...}, media: [...] }],
+  // ...
+};
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The homepage cards and `/projects/[slug]` render from the same object, so adding a project is one content file plus one registry entry — never a new page component. Detail pages are statically generated via `generateStaticParams`, which means a malformed project fails the build instead of breaking at runtime.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Two details worth calling out:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Featured is a flag, not a position.** `featured: true` on exactly one project drives the large card. Reordering the list can't silently change what's highlighted.
+- **Placeholders are first-class.** A content string starting with `[TODO ...]` is detected by `lib/placeholder.ts` and the UI degrades gracefully — a "media pending" panel instead of a broken image. Unfinished work stays visibly unfinished rather than getting filled in with a plausible-sounding invention.
 
-## Learn More
+## Layout
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/
+  page.tsx              Hero · Projects · Contact · Footer
+  projects/[slug]/      SSG detail pages
+  resume/               embedded PDF viewer
+  api/contact/          Resend
+components/
+  sections/             homepage bands
+  project/              detail-page blocks (hero, specs, gallery, code, diagram)
+  ui/                   ProjectCard, StatusBadge, TiltCard, shader background
+content/projects/       one typed object per project + registry
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`CLAUDE.md` documents the design tokens, content model, and image aspect-ratio rules.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Running it
 
-## Deploy on Vercel
+```bash
+npm install
+npm run dev      # localhost:3000
+npm run build    # also type-checks
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The contact form needs `RESEND_API_KEY` in `.env.local`; everything else runs without configuration.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Notes
+
+Dark-first, high-contrast, no UI framework — Tailwind utilities and a small set of hand-built primitives. Deployed on Vercel.
