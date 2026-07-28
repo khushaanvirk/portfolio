@@ -1,4 +1,5 @@
 import type { ProjectContent } from "./types";
+import { pedestrianDeadReckoning } from "./pedestrian-dead-reckoning";
 import { keyboardPcb } from "./keyboard-pcb";
 import { reflowOvenController } from "./reflow-oven-controller";
 import { fieldFollowingRobot } from "./field-following-robot";
@@ -9,6 +10,7 @@ import { acPhasorVoltmeter } from "./ac-phasor-voltmeter";
 import { capacitanceMeters } from "./capacitance-meters";
 
 export const projectsBySlug: Record<string, ProjectContent> = {
+  [pedestrianDeadReckoning.slug]: pedestrianDeadReckoning,
   [keyboardPcb.slug]: keyboardPcb,
   [reflowOvenController.slug]: reflowOvenController,
   [fieldFollowingRobot.slug]: fieldFollowingRobot,
@@ -21,6 +23,7 @@ export const projectsBySlug: Record<string, ProjectContent> = {
 
 // Display order on the homepage project list.
 export const projectOrder: string[] = [
+  pedestrianDeadReckoning.slug,
   keyboardPcb.slug,
   reflowOvenController.slug,
   fieldFollowingRobot.slug,
