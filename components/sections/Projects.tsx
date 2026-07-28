@@ -6,7 +6,7 @@ export default function Projects() {
   const [featured, ...rest] = allProjects;
 
   return (
-    <section id="projects" className="relative pt-12">
+    <section id="projects" className="relative -mt-px bg-[#0A0A0A] pt-12">
       <div className="max-w-6xl mx-auto px-6 pt-12 pb-16 flex flex-col gap-6">
         <SectionHeader title="Projects" />
         <ProjectCard project={featured} index={0} variant="featured" />

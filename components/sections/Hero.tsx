@@ -12,11 +12,14 @@ const links = [
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[80vh] md:min-h-[75vh] flex items-end px-6 pt-16 pb-12 overflow-hidden">
+    <section className="relative min-h-[80vh] md:min-h-[75vh] flex items-end px-6 pt-16 pb-12 overflow-hidden bg-[#0A0A0A]">
       <ShaderBackground className="absolute inset-0 w-full h-full opacity-60 print:hidden" />
+      {/* Top-to-bottom scrim: darkens the very top, lets the shader breathe through
+          the middle, then resolves to SOLID #0A0A0A by 82% so the bottom band is
+          pixel-identical to the Projects section below it — no faint seam. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/30 via-transparent to-[#0A0A0A] pointer-events-none print:hidden"
+        className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(10,10,10,0.3)_0%,rgba(10,10,10,0)_38%,#0A0A0A_82%)] pointer-events-none print:hidden"
       />
       <div className="relative max-w-4xl mx-auto w-full flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
         <motion.div
