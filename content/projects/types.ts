@@ -49,6 +49,12 @@ export interface ProjectContent {
     src: string;
     poster?: string;
     alt: string;
+    /**
+     * Portrait media renders at its natural aspect in a centered, height-capped
+     * box instead of being letterboxed inside a landscape well. Defaults to
+     * landscape when omitted.
+     */
+    orientation?: "landscape" | "portrait";
   };
   summary: string[];
   specs: SpecRow[];
