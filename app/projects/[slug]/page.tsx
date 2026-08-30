@@ -6,6 +6,7 @@ import SpecTable from "@/components/project/SpecTable";
 import SystemDiagram from "@/components/project/SystemDiagram";
 import CodeBlock from "@/components/project/CodeBlock";
 import MediaGallery from "@/components/project/MediaGallery";
+import InlineCode from "@/components/project/InlineCode";
 import Resources from "@/components/project/Resources";
 import { allProjects, projectsBySlug } from "@/content/projects";
 import { isPlaceholder } from "@/lib/placeholder";
@@ -37,7 +38,9 @@ function Paragraph({ text }: { text: string }) {
     );
   }
   return (
-    <p className="text-[#D4D4D4] leading-relaxed print:text-black">{text}</p>
+    <p className="text-[#D4D4D4] leading-relaxed print:text-black">
+      <InlineCode text={text} />
+    </p>
   );
 }
 
@@ -106,7 +109,7 @@ export default async function ProjectPage({ params }: PageProps) {
             <ul className="space-y-2 list-disc pl-5 marker:text-[#404040]">
               {project.challenges.map((c, i) => (
                 <li key={i} className={isPlaceholder(c) ? "text-[#737373] italic print:text-black/50" : "text-[#D4D4D4] leading-relaxed print:text-black"}>
-                  {c}
+                  <InlineCode text={c} />
                 </li>
               ))}
             </ul>

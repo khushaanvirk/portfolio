@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Lightbox from "./Lightbox";
+import InlineCode from "./InlineCode";
 import { isPlaceholder } from "@/lib/placeholder";
 import type { MediaItem } from "@/content/projects/types";
 
@@ -49,7 +50,7 @@ export default function MediaGallery({ media }: Props) {
             )}
             {item.caption && (
               <figcaption className="px-4 py-2 text-[#737373] text-xs font-mono print:text-black/60">
-                {item.caption}
+                <InlineCode text={item.caption} />
               </figcaption>
             )}
           </figure>

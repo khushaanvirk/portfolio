@@ -1,3 +1,4 @@
+import InlineCode from "./InlineCode";
 import type { CodeSample } from "@/content/projects/types";
 
 interface Props {
@@ -16,7 +17,7 @@ export default function CodeBlock({ sample }: Props) {
       </pre>
       {sample.caption && (
         <figcaption className="mt-2 text-[#737373] text-xs font-mono print:text-black/60">
-          {sample.caption}
+          <InlineCode text={sample.caption} />
         </figcaption>
       )}
     </figure>
