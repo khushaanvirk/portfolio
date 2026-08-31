@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { TiltCard } from "@/components/ui/tilt-card";
-import StatusBadge from "@/components/ui/StatusBadge";
 import { isPlaceholder } from "@/lib/placeholder";
 import type { ProjectContent } from "@/content/projects/types";
 
@@ -110,7 +109,6 @@ export default function ProjectCard({
                   <span aria-hidden className="h-px flex-1 bg-[#1F1F1F]" />
                 </div>
 
-                {project.badge && <StatusBadge label={project.badge} />}
 
                 <p className="text-[#737373] text-xs font-mono uppercase tracking-widest">
                   {metaLine}
@@ -189,7 +187,6 @@ export default function ProjectCard({
 
             {/* Content */}
             <div className="flex flex-1 flex-col gap-2.5 p-5">
-              {project.badge && <StatusBadge label={project.badge} />}
 
               <p className="text-[#737373] text-[10px] font-mono uppercase tracking-widest">
                 {metaLine}
