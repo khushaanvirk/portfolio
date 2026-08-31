@@ -62,8 +62,8 @@ export default function Contact() {
           transition={{ duration: 0.4 }}
           className="text-[#A3A3A3] text-sm leading-relaxed mb-6 max-w-xl"
         >
-          Open to internships, collaborations, and interesting projects. Drop a
-          message. I&apos;ll get back to you.
+          Open to internships and collaborations. Send a message and
+          I&apos;ll get back to you.
         </motion.p>
 
         <motion.form

@@ -112,7 +112,7 @@ export const fieldFollowingRobot: ProjectContent = {
       heading: "Remote control",
       body: [
         "The remote sits on an EFM8LB12F64 and reads two analog joystick axes through the on-chip 14-bit ADC plus six tactile buttons. Timer 0 toggles a GPIO at 38 kHz to modulate the IR LED, and a single byte-length-encoded command is sent in 50 ms windows: button presses send fixed-length pulses, and joystick deflections scale linearly into the pulse length using V_button = 25 + 10·V_x for X and V_button = 70 + 10·V_y for Y.",
-        "On the robot side, two TSOP33338 receivers are placed on small antennas and wired into an OR gate so that the receiver coverage area is roughly the union of the two. A pulse-width discriminator on the STM32 maps received pulse lengths back to commands: 2–8 ms → joystick X, 8–18 ms → joystick Y, then dedicated bands for honk, mode toggle, path swap, pause, speed down, and speed up. Joystick X/Y are mixed into per-wheel commands as `left = y + x`, `right = y − x`.",
+        "On the robot side, two TSOP33338 receivers are placed on small antennas and wired into an OR gate so that the receiver coverage area is roughly the union of the two. A pulse-width discriminator on the STM32 maps received pulse lengths back to commands: 2 to 8 ms for joystick X, 8 to 18 ms for joystick Y, then dedicated bands for honk, mode toggle, path swap, pause, speed down, and speed up. Joystick X/Y are mixed into per-wheel commands as `left = y + x`, `right = y − x`.",
       ],
       media: [
         {
@@ -131,7 +131,7 @@ export const fieldFollowingRobot: ProjectContent = {
       heading: "Validation",
       body: [
         "All three pre-configured paths were run on the figure-8 guide-wire layout and consistently completed their turn sequences. Intersection detection was reliable at the tuned base speed of 600 (out of 1000); above that the chassis sometimes passed over an intersection too quickly to register, and below ~400 the steering felt sluggish. Adjustable speed via the remote let us tune this live during the demonstration.",
-        "We also characterized the IR link by sending 10 commands at increasing horizontal distances, with the remote held at receiver height. All commands landed within 2 m; success rate dropped roughly linearly to 0 % at 3.8 m. IR pollution from neighbouring groups was the main failure mode. The receiver design is fine, but the medium itself is contested.",
+        "We also characterized the IR link by sending 10 commands at increasing horizontal distances, with the remote held at receiver height. All commands landed within 2 m; success rate dropped roughly linearly to 0 % at 3.8 m. IR pollution from neighbouring groups was the main failure mode.",
       ],
       media: [
         {
@@ -144,7 +144,7 @@ export const fieldFollowingRobot: ProjectContent = {
   ],
   challenges: [
     "Motor switching noise initially coupled into the inductive sensors badly enough to corrupt the steering signal. Adding the LTV-847 optocoupler stage between the STM32 GPIOs and the H-bridge gates and splitting the grounds dropped the noise to a manageable level.",
-    "The left motor consistently ran weaker than the right under identical drive, almost certainly a manufacturing tolerance. Rather than swap motors, the firmware applies a +25 % trim to the left command, which gave straighter long-line tracking than mechanical alignment did.",
+    "The left motor consistently ran weaker than the right under identical drive, almost certainly a manufacturing tolerance. The firmware applies a +25 % trim to the left command instead of swapping motors, which gave straighter long-line tracking than mechanical alignment did.",
     "Tuning the base forward speed against intersection detection required an adjustable-speed feature on the remote: too fast meant missed intersections, too slow felt sluggish. Locking the demo at ~600 / 1000 hit the right balance.",
   ],
   resources: [

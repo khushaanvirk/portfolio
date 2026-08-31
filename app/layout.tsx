@@ -16,11 +16,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://khushaanvirk.com"),
   title: "Khushaan Virk",
   description:
-    "Electrical Engineering student at UBC. Embedded systems, PCB design, and hardware-software integration.",
+    "Electrical Engineering student at UBC. I design PCBs and write embedded firmware, from schematic to bring-up.",
   openGraph: {
     title: "Khushaan Virk",
     description:
-      "Electrical Engineering student at UBC. Embedded systems, PCB design, and hardware-software integration.",
+      "Electrical Engineering student at UBC. I design PCBs and write embedded firmware, from schematic to bring-up.",
     type: "website",
   },
 };

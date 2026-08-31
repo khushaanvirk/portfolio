@@ -32,7 +32,7 @@ export const fpgaTron: ProjectContent = {
       heading: "Implementation",
       body: [
         "The game runs as a tight loop on the Nios V soft core: each tick advances both lightcycles, checks the trail map for collisions, and writes the new frame to the back buffer. Bit masking on the VGA memory-mapped control registers handles pixel writes and the buffer swap directly, without going through a separate framebuffer driver.",
-        "Inputs are routed through hardware interrupts rather than polled, so a button press registers on the next tick regardless of where the main loop is sitting. With the double-buffer swap synced to the screen refresh, frames stay clean at 60 Hz.",
+        "Inputs go through hardware interrupts instead of polling, so a button press registers on the next tick regardless of where the main loop is sitting. With the double-buffer swap synced to the screen refresh, frames stay clean at 60 Hz.",
       ],
     },
   ],

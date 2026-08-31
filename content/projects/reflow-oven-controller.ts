@@ -16,11 +16,11 @@ export const reflowOvenController: ProjectContent = {
   },
   summary: [
     "An SMD reflow oven controller built on a CV-8052 microcontroller and a retrofitted toaster oven. The firmware is written entirely in 8051 assembly and runs a 6-state FSM (idle → preheat → soak → ramp → reflow → cool) that drives a solid-state relay to follow a user-configured solder profile.",
-    "Temperature is measured with a K-type thermocouple front-end built around an OP07 op-amp and an LM335 cold-junction reference, sampled by the DE10-Lite's on-chip ADC. The system held ±3 °C accuracy across 25–240 °C and reflowed test boards during the project demonstration. A Python dashboard pulls UART telemetry at 115200 baud, draws a live strip-chart against the predicted profile, and exports an Excel report when the cycle completes.",
+    "Temperature is measured with a K-type thermocouple front-end built around an OP07 op-amp and an LM335 cold-junction reference, sampled by the DE10-Lite's on-chip ADC. The system held ±3 °C accuracy across 25 to 240 °C and reflowed test boards during the project demonstration. A Python dashboard pulls UART telemetry at 115200 baud, draws a live strip-chart against the predicted profile, and exports an Excel report when the cycle completes.",
   ],
   specs: [
     { label: "Microcontroller", value: "CV-8052 on the DE10-Lite (8051-class soft processor)" },
-    { label: "Accuracy", value: "±3 °C over 25–240 °C" },
+    { label: "Accuracy", value: "±3 °C over 25 to 240 °C" },
     { label: "Control loop", value: "Hybrid: 100 % drive during ramps, low-frequency time-proportioning during soak / dwell" },
     { label: "FSM", value: "Idle → Preheat → Soak → Ramp-to-reflow → Reflow → Cooldown" },
     { label: "Sensor front-end", value: "K-type thermocouple → OP07 difference amplifier → ADC; LM335 cold-junction reference on a second ADC channel" },

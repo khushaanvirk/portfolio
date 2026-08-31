@@ -5,7 +5,7 @@ export const capacitanceMeters: ProjectContent = {
   title: "Capacitance Meters (Dual Platform)",
   oneLineSummary:
     "Capacitance meters on EFM8 and STM32 using a 555 astable + a discrete-component equivalent",
-  dates: "Oct–Nov 2025",
+  dates: "Oct to Nov 2025",
   status: "Coursework",
   role: "Solo, ELEC 291 Module 4",
   tags: ["EFM8LB1", "STM32", "555 Timer", "C"],
@@ -22,7 +22,7 @@ export const capacitanceMeters: ProjectContent = {
     { label: "MCUs", value: "EFM8LB12F64 (8051 family) and STM32 (ARM Cortex)" },
     { label: "EFM8 system clock", value: "72 MHz internal oscillator" },
     { label: "Astable target", value: "f = 1.44 / ((R_A + 2·R_B)·C) with R_A = R_B = 10 kΩ" },
-    { label: "Range", value: "1 nF – 1 µF (rejected outside this band)" },
+    { label: "Range", value: "1 nF to 1 µF (rejected outside this band)" },
     { label: "Frequency capture", value: "Timer 0 input on P0.0 (EFM8); pulse counting in software" },
     { label: "Stability filter", value: "Δf < 5 Hz across 3 consecutive samples = stable; > 5 % rel. change = noisy" },
     { label: "LCD modes", value: "4 modes: instantaneous / min-max / running average / angular freq" },
