@@ -1,6 +1,6 @@
 import Image from "next/image";
+import HeroVideo from "./HeroVideo";
 import { isPlaceholder } from "@/lib/placeholder";
-import { cn } from "@/lib/utils";
 import type { ProjectContent } from "@/content/projects/types";
 
 interface Props {
@@ -20,23 +20,7 @@ export default function ProjectHero({ hero }: Props) {
           <span className="text-xs font-mono italic max-w-md">{hero.alt}</span>
         </div>
       ) : hero.type === "video" ? (
-        <div className="flex justify-center bg-black">
-          <video
-            src={hero.src}
-            poster={hero.poster}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            className={cn(
-              "object-contain bg-black print:hidden",
-              hero.orientation === "portrait"
-                ? "h-[560px] max-h-[75vh] w-auto max-w-full"
-                : "w-full max-h-[500px]"
-            )}
-          />
-        </div>
+        <HeroVideo hero={hero} />
       ) : (
         <div className="relative w-full aspect-video">
           <Image
