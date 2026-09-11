@@ -101,5 +101,10 @@ export const keyboardPcb: ProjectContent = {
       ],
     },
   ],
-  resources: [],
+  resources: [
+    {
+      label: "Gerbers, case files and firmware (GitHub)",
+      href: "https://github.com/khushaanvirk/khushaan65",
+    },
+  ],
 };
