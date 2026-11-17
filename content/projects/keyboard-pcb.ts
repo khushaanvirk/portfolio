@@ -4,8 +4,8 @@ export const keyboardPcb: Project = {
   slug: "keyboard-pcb",
   title: "65% keyboard PCB",
   year: "2026",
-  line: "67 keys, 4 layers, worked on the first spin",
-  skills: ["PCB design", "Altium", "Embedded C", "STM32", "USB"],
+  line: "67-key board I designed and built",
+  skills: ["PCB design", "Altium", "Embedded C"],
   preview: {
     type: "video",
     src: "/projects/keyboard-demo.mp4",

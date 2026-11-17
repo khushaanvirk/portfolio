@@ -4,8 +4,8 @@ export const pedestrianDeadReckoning: Project = {
   slug: "pedestrian-dead-reckoning",
   title: "Pedestrian dead reckoning",
   year: "2026",
-  line: "A walked path rebuilt from phone sensors",
-  skills: ["Python", "NumPy", "SciPy", "Signal processing"],
+  line: "Path from phone sensors",
+  skills: ["Python", "NumPy", "Signal processing"],
   preview: {
     type: "drawing",
     src: "/projects/drawings/pdr.svg",

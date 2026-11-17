@@ -4,8 +4,8 @@ export const embeddedAlarmClock: Project = {
   slug: "embedded-alarm-clock",
   title: "Alarm clock",
   year: "2025",
-  line: "8051 assembly, with snooze",
-  skills: ["Assembly", "Microcontrollers", "Interrupts"],
+  line: "8051 microcontroller, with snooze",
+  skills: ["Assembly", "Interrupts", "Timers"],
   preview: {
     type: "drawing",
     src: "/projects/drawings/clock.svg",

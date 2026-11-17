@@ -4,8 +4,8 @@ export const reflowOvenController: Project = {
   slug: "reflow-oven-controller",
   title: "Reflow oven controller",
   year: "2026",
-  line: "8051 assembly, holds ±3 °C",
-  skills: ["Assembly", "Analog circuits", "Control systems", "Python"],
+  line: "Toaster oven that holds ±3 °C",
+  skills: ["Assembly", "Analog circuits", "Python"],
   preview: {
     type: "image",
     src: "/projects/reflow.jpg",

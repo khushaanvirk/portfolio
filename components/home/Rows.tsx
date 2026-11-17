@@ -7,8 +7,8 @@ export const rowClass =
 
 export const noteClass = "font-mono text-[12.5px] text-muted";
 
-/** The second line of a row: its skills, joined with dots. */
-export const skillsClass = "mt-0.5 block text-[13px]";
+/** The "|" between a row's description and its skills. */
+export const pipeClass = "mx-2 text-dim";
 
 export function joinSkills(skills: readonly string[]) {
   return skills.join(" · ");
@@ -33,8 +33,8 @@ export function Section({
 }
 
 /**
- * A name, a short description, and a note on the right such as a year.
- * Skills, when there are any, go on a second line underneath.
+ * One line: a name, a short description, then "| skills" when there are any,
+ * and a note on the right such as a year.
  */
 export function Row({
   name,
@@ -53,9 +53,12 @@ export function Row({
         <span className="font-medium">{name}</span>
         <span className="ml-2.5 text-secondary">{detail}</span>
         {skills.length > 0 && (
-          <span className={cn(skillsClass, "text-muted")}>
-            {joinSkills(skills)}
-          </span>
+          <>
+            <span aria-hidden className={pipeClass}>
+              |
+            </span>
+            <span className="text-muted">{joinSkills(skills)}</span>
+          </>
         )}
       </span>
       <span className={noteClass}>{note}</span>

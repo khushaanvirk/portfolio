@@ -7,15 +7,15 @@ import { cn } from "@/lib/utils";
 import {
   joinSkills,
   noteClass,
+  pipeClass,
   rowClass,
-  skillsClass,
 } from "@/components/home/Rows";
 import type { Project } from "@/content/projects/types";
 
-// The preview sits to the right of the 560px column, so it only fits on a
+// The preview sits to the right of the 740px column, so it only fits on a
 // wide window. Below this it is not rendered at all, which also keeps phones
 // from downloading the keyboard video.
-const WIDE = "(min-width: 1100px)";
+const WIDE = "(min-width: 1200px)";
 
 function subscribeWide(onChange: () => void) {
   const query = window.matchMedia(WIDE);
@@ -80,9 +80,11 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                 >
                   {project.line}
                 </span>
+                <span aria-hidden className={pipeClass}>
+                  |
+                </span>
                 <span
                   className={cn(
-                    skillsClass,
                     "transition-colors duration-200",
                     on ? "text-secondary" : dim ? "text-dim" : "text-muted"
                   )}
@@ -131,7 +133,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
       {wide && (
         <aside
           aria-hidden
-          className="absolute left-[calc(100%+72px)] top-[29px] w-[380px]"
+          className="absolute left-[calc(100%+48px)] top-[29px] w-[360px]"
         >
           <div className="relative aspect-[4/3] overflow-hidden rounded-[10px] border border-border bg-surface">
             {projects.map((project) => {
@@ -160,7 +162,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                   src={preview.src}
                   alt=""
                   fill
-                  sizes="380px"
+                  sizes="360px"
                   unoptimized={preview.type === "drawing"}
                   className={layer}
                 />

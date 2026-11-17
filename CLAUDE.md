@@ -47,8 +47,11 @@ Recurring patterns:
 - **Type.** 15px Inter for everything; 13px for section titles and captions;
   12.5px JetBrains Mono for years and dates. The only large text is a project
   page's 28px title.
-- **Width.** Text sits in a 560px column. On windows 1100px and wider the
-  project preview (380px) sits to its right.
+- **Width.** The homepage is a 740px column, so a row's description and
+  skills fit on one line. On windows 1200px and wider the project preview
+  (360px) sits to its right. Project pages use a 760px column.
+- **One line per row.** On a desktop window no homepage row should wrap. If a
+  new row does, shorten its description or drop a skill.
 - **Print.** `globals.css` turns any page black-on-white for "Save as PDF".
 
 ## Content
@@ -84,10 +87,10 @@ measurement.
 
 ### Skills
 
-Each project, and each job in `site.ts`, lists three to five skills that show
-on a second line under its row. Use the words a job posting would use (PCB
-design, Embedded C, Python, SQL), and only skills the work really used. No
-part numbers, features, or filler.
+Each project, and each job in `site.ts`, lists three or four skills. They show
+on the same line as the description, after a `|`. Use the words a job posting
+would use (PCB design, Embedded C, Python, SQL), and only skills the work
+really used. No part numbers, features, or filler.
 
 ### Previews
 

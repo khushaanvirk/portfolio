@@ -4,7 +4,7 @@ export const acPhasorVoltmeter: Project = {
   slug: "ac-phasor-voltmeter",
   title: "AC phasor voltmeter",
   year: "2026",
-  line: "Reads RMS, phase and power factor",
+  line: "Reads RMS, phase, power factor",
   skills: ["Embedded C", "ADC", "Signal processing"],
   preview: {
     type: "drawing",
