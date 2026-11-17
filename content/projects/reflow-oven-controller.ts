@@ -5,6 +5,7 @@ export const reflowOvenController: Project = {
   title: "Reflow oven controller",
   year: "2026",
   line: "8051 assembly, holds ±3 °C",
+  skills: ["Assembly", "Analog circuits", "Control systems", "Python"],
   preview: {
     type: "image",
     src: "/projects/reflow.jpg",

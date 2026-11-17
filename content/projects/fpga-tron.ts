@@ -5,6 +5,7 @@ export const fpgaTron: Project = {
   title: "FPGA Tron",
   year: "2025",
   line: "Two-player arcade game over VGA",
+  skills: ["FPGA", "C", "RISC-V"],
   preview: {
     type: "drawing",
     src: "/projects/drawings/tron.svg",

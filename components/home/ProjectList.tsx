@@ -4,7 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useSyncExternalStore } from "react";
 import { cn } from "@/lib/utils";
-import { noteClass, rowClass } from "@/components/home/Rows";
+import {
+  joinSkills,
+  noteClass,
+  rowClass,
+  skillsClass,
+} from "@/components/home/Rows";
 import type { Project } from "@/content/projects/types";
 
 // The preview sits to the right of the 560px column, so it only fits on a
@@ -74,6 +79,15 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                   )}
                 >
                   {project.line}
+                </span>
+                <span
+                  className={cn(
+                    skillsClass,
+                    "transition-colors duration-200",
+                    on ? "text-secondary" : dim ? "text-dim" : "text-muted"
+                  )}
+                >
+                  {joinSkills(project.skills)}
                 </span>
               </span>
               <span

@@ -5,6 +5,7 @@ export const pedestrianDeadReckoning: Project = {
   title: "Pedestrian dead reckoning",
   year: "2026",
   line: "A walked path rebuilt from phone sensors",
+  skills: ["Python", "NumPy", "SciPy", "Signal processing"],
   preview: {
     type: "drawing",
     src: "/projects/drawings/pdr.svg",

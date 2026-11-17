@@ -7,6 +7,13 @@ export const rowClass =
 
 export const noteClass = "font-mono text-[12.5px] text-muted";
 
+/** The second line of a row: its skills, joined with dots. */
+export const skillsClass = "mt-0.5 block text-[13px]";
+
+export function joinSkills(skills: readonly string[]) {
+  return skills.join(" · ");
+}
+
 /** A titled block on the homepage: Work, Projects, Off the clock. */
 export function Section({
   title,
@@ -25,21 +32,31 @@ export function Section({
   );
 }
 
-/** A name, a short description, and a note on the right such as a year. */
+/**
+ * A name, a short description, and a note on the right such as a year.
+ * Skills, when there are any, go on a second line underneath.
+ */
 export function Row({
   name,
   detail,
   note,
+  skills = [],
 }: {
   name: string;
   detail: string;
   note: string;
+  skills?: readonly string[];
 }) {
   return (
     <div className={rowClass}>
       <span>
         <span className="font-medium">{name}</span>
         <span className="ml-2.5 text-secondary">{detail}</span>
+        {skills.length > 0 && (
+          <span className={cn(skillsClass, "text-muted")}>
+            {joinSkills(skills)}
+          </span>
+        )}
       </span>
       <span className={noteClass}>{note}</span>
     </div>

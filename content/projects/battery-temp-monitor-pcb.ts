@@ -5,6 +5,7 @@ export const batteryTempMonitorPcb: Project = {
   title: "Battery temperature monitor",
   year: "2025",
   line: "Coin-cell over-temperature alert",
+  skills: ["PCB design", "KiCad", "Analog circuits"],
   preview: {
     type: "image",
     src: "/projects/pcb.jpg",

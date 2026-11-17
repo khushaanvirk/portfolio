@@ -67,8 +67,8 @@ content/
 
 ### Projects
 
-A `Project` has a `title`, `year`, the homepage `line`, and a `preview` (what
-shows beside the list while its row is hovered). Then one of:
+A `Project` has a `title`, `year`, the homepage `line`, its `skills`, and a
+`preview` (what shows beside the list while its row is hovered). Then one of:
 
 - `page` — it gets `/projects/<slug>`: a sentence or two, one hero photo or
   video, at most six spec rows, a small image grid, links.
@@ -81,6 +81,13 @@ the page, so a broken entry fails the build.
 
 **Never invent a spec, number, or result.** Every figure on the site is a real
 measurement.
+
+### Skills
+
+Each project, and each job in `site.ts`, lists three to five skills that show
+on a second line under its row. Use the words a job posting would use (PCB
+design, Embedded C, Python, SQL), and only skills the work really used. No
+part numbers, features, or filler.
 
 ### Previews
 

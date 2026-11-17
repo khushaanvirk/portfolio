@@ -7,6 +7,7 @@ export const uqueue: Project = {
   title: "uQueue",
   year: "2026",
   line: "Clinic appointment search, built at Advizr",
+  skills: ["TypeScript", "Python", "SQL", "AI automation"],
   preview: {
     type: "image",
     src: "/projects/uqueue.jpg",

@@ -13,13 +13,19 @@ export const site = {
   ],
 
   work: [
-    { name: "Bosch", role: "Software engineer", when: "Incoming" },
-    { name: "Advizr", role: "Software engineer", when: "2026 to now" },
+    // No skills for Bosch until the job has started.
+    { name: "Bosch", role: "Software engineer", when: "Incoming", skills: [] },
+    {
+      name: "Advizr",
+      role: "Software engineer",
+      when: "2026 to now",
+      skills: ["TypeScript", "Python", "SQL", "LLM agents", "CI/CD"],
+    },
   ],
 
   reading: "Meditations, and The Will of the Many",
   finished: "Psycho-Cybernetics",
-  also: "Climbing, running, techno and dubstep, sleepmaxxing",
+  also: "Climbing, running, techno and dubstep, health",
 
   // The rapid rating is read live from chess.com's public API.
   chess: {
