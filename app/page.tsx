@@ -22,10 +22,11 @@ export default async function Home() {
   const updated = builtMonth(site.timeZone);
 
   return (
-    // 560px of text. On a wide window the container grows so the project
-    // preview (380px, 72px to the right) sits inside the centred block.
-    <div className="mx-auto w-full max-w-[608px] px-6 pb-24 pt-24 min-[1100px]:max-w-[1060px]">
-      <main className="max-w-[560px]">
+    // 740px of text, wide enough for a project's description and skills to
+    // share one line. On a wide window the container grows so the project
+    // preview (360px, 48px to the right) sits inside the centred block.
+    <div className="mx-auto w-full max-w-[788px] px-6 pb-24 pt-24 min-[1200px]:max-w-[1196px]">
+      <main className="max-w-[740px]">
         <header className="flex items-center gap-3.5">
           <Image
             src="/avatar.png"

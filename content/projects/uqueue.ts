@@ -6,7 +6,7 @@ export const uqueue: Project = {
   slug: "uqueue",
   title: "uQueue",
   year: "2026",
-  line: "Clinic appointment search, built at Advizr",
+  line: "Clinic appointment search at Advizr",
   skills: ["TypeScript", "Python", "SQL", "AI automation"],
   preview: {
     type: "image",

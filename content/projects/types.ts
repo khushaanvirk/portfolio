@@ -55,8 +55,9 @@ export interface Project {
   /** The one line shown next to the title on the homepage. */
   line: string;
   /**
-   * Three to five skills shown under the line. Use the words a job posting
-   * would use (PCB design, Embedded C, Python), not part numbers or features.
+   * Three or four skills shown after the line, behind a "|". Use the words a
+   * job posting would use (PCB design, Embedded C, Python), not part numbers
+   * or features. Line and skills together must fit on one row.
    */
   skills: string[];
   preview: Preview;
