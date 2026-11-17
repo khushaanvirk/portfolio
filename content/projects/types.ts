@@ -1,20 +1,7 @@
 export interface MediaItem {
   src: string;
   alt: string;
-  caption?: string;
-}
-
-export interface CodeSample {
-  language: string;
-  source: string;
-  caption?: string;
-}
-
-export interface ProjectSection {
-  heading: string;
-  body: string[];
-  media?: MediaItem[];
-  code?: CodeSample;
+  caption: string;
 }
 
 export interface SpecRow {
@@ -22,46 +9,54 @@ export interface SpecRow {
   value: string;
 }
 
-export interface ResourceLink {
+export interface ProjectLink {
   label: string;
   href: string;
 }
 
-export interface ProjectContent {
+/** What the homepage shows beside the list while a project row is hovered. */
+export interface Preview {
+  /** "drawing" is one of the white line SVGs in public/projects/drawings. */
+  type: "image" | "video" | "drawing";
+  src: string;
+  /** Still frame for a video. */
+  poster?: string;
+  /** Tailwind object-position class, for a photo whose subject is off-centre. */
+  position?: string;
+}
+
+export interface Hero {
+  type: "image" | "video";
+  src: string;
+  /** Still frame for a video. */
+  poster?: string;
+  alt: string;
+  /**
+   * Shape of the media. Portrait shapes (9/16, 3/4) sit beside the spec list;
+   * landscape shapes span the page above it.
+   */
+  aspect: "9/16" | "3/4" | "4/3" | "3/2" | "16/9";
+}
+
+/** Everything on a project's own page. Keep it short: one or two sentences, six specs. */
+export interface ProjectPage {
+  dates: string;
+  blurb: string;
+  hero: Hero;
+  specs: SpecRow[];
+  media: MediaItem[];
+  links: ProjectLink[];
+}
+
+export interface Project {
   slug: string;
   title: string;
-  oneLineSummary: string;
-  dates: string;
-  status?: string;
-  /**
-   * Marks the project rendered as the large card at the top of the homepage
-   * Projects section. Deliberately independent of `projectOrder` so the
-   * highlighted project doesn't have to be the most recent one. Set it on
-   * exactly one project; the first project is used as a fallback.
-   */
-  featured?: boolean;
-  role?: string;
-  tags: string[];
-  hero: {
-    type: "image" | "video";
-    src: string;
-    poster?: string;
-    alt: string;
-    /**
-     * Portrait media renders at its natural aspect in a centered, height-capped
-     * box instead of being letterboxed inside a landscape well. Defaults to
-     * landscape when omitted.
-     */
-    orientation?: "landscape" | "portrait";
-  };
-  summary: string[];
-  specs: SpecRow[];
-  systemDiagram?: {
-    src: string;
-    alt: string;
-    caption?: string;
-  };
-  sections: ProjectSection[];
-  challenges?: string[];
-  resources: ResourceLink[];
+  year: string;
+  /** The one line shown next to the title on the homepage. */
+  line: string;
+  preview: Preview;
+  /** Omit for a project that lives on its own site; set `externalUrl` instead. */
+  page?: ProjectPage;
+  /** The homepage row links here, in a new tab, instead of to a project page. */
+  externalUrl?: string;
 }

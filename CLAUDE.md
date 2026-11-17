@@ -1,17 +1,15 @@
 # Khushaan Virk — Personal Portfolio Site
 
-Project-first portfolio at **khushaanvirk.com**. The homepage is a hero, a
-projects section, and a contact form; every project also has its own detail
-page. Deployed on Vercel from `main` — a push to `main` is a deploy.
+Portfolio at **khushaanvirk.com**. One quiet page: name, links, work, a list of
+projects, and what he does off the clock. Most projects also have a short page
+of their own. Deployed on Vercel from `main` — a push to `main` is a deploy.
 
 ## Stack
 
 - **Next.js 16** (App Router, Turbopack) · **React 19** · **TypeScript**
 - **Tailwind CSS v4** — configured in `app/globals.css` via `@theme inline`,
   not a `tailwind.config.js`
-- **framer-motion** for scroll-reveal and tilt, **react-hook-form** +
-  **resend** for the contact form
-- Fonts: `Geist` and `Geist_Mono` via `next/font/google`
+- Fonts: `Inter` and `JetBrains_Mono` via `next/font/google`
 - npm. No test runner is set up.
 
 ```bash
@@ -20,117 +18,119 @@ npm run build   # also runs tsc; must pass before pushing
 npm run lint
 ```
 
-## Design system
+## Design
 
-Dark-first, high-contrast, editorial. Colours live as `@theme` tokens in
-`app/globals.css`, but components mostly write the hex directly — match the
-surrounding file rather than mixing the two conventions.
+Minimal on purpose. White text on near-black, **no accent colour**, no
+animation beyond colour and opacity fades. Text is short everywhere: a project
+gets one line on the homepage and one or two sentences on its page. Don't add
+long write-ups, tag pills, cards, or decorative effects.
+
+Colours are `@theme` tokens in `app/globals.css`. Use the token classes
+(`text-secondary`, `border-border`, `bg-surface`), not raw hex.
 
 | Token | Value | Used for |
 |---|---|---|
-| background | `#0A0A0A` | page background |
-| surface | `#141414` | cards, code blocks, figures |
-| border | `#1F1F1F` | every hairline border |
-| primary | `#F5F5F5` | headings, body emphasis |
-| secondary | `#737373` | captions, meta lines, eyebrows |
-| accent | `#3B82F6` | status pills, focus rings |
+| background | `#0B0B0C` | page |
+| surface | `#121214` | image and video frames |
+| border | `#1C1C1E` | every hairline |
+| primary | `#EDEDED` | names, titles, values |
+| body | `#C9C9C9` | the sentence on a project page |
+| secondary | `#9A9A9A` | descriptions, row labels |
+| muted | `#8C8C8C` | section titles, years, captions |
+| dim | `#7C7C80` | rows faded while another is hovered |
 
-Recurring patterns worth preserving:
+Recurring patterns:
 
-- **Mono eyebrows.** Small labels are
-  `font-mono text-[10px] uppercase tracking-widest` — section kickers, meta
-  lines, figure captions, tag pills.
-- **Body copy** is `#D4D4D4` on detail pages, `#A3A3A3` on cards.
-- **Rounded-3xl cards** with a `#1F1F1F` border on `#141414`.
-- **Motion is subtle**: fade + small y-offset on scroll into view, `once: true`.
-  No looping or attention-seeking animation.
-- Print styles exist (`print:` variants) so detail pages export cleanly to PDF.
-  Don't drop them when editing a detail-page component.
+- **Rows.** Everything is a hairline-separated row (`rowClass` in
+  `components/home/Rows.tsx`): name and description on the left, a mono note
+  such as a year on the right.
+- **Type.** 15px Inter for everything; 13px for section titles and captions;
+  12.5px JetBrains Mono for years and dates. The only large text is a project
+  page's 28px title.
+- **Width.** Text sits in a 560px column. On windows 1100px and wider the
+  project preview (380px) sits to its right.
+- **Print.** `globals.css` turns any page black-on-white for "Save as PDF".
 
-## Content model
+## Content
 
-Projects are **data, not JSX**. Each one is a `ProjectContent` object in
-`content/projects/<slug>.ts`, typed by `content/projects/types.ts`, and
-registered in `content/projects/index.ts`. Both the homepage cards and
-`/projects/[slug]` render from the same object, so adding a project means
-adding one file and one entry — never a new page component.
+Words and data live in `content/`, layout lives in `app/` and `components/`.
 
 ```
-content/projects/
-  types.ts       ProjectContent, ProjectSection, MediaItem, SpecRow, ...
-  index.ts       projectsBySlug · projectOrder · allProjects
-                 featuredProject · gridProjects
-  <slug>.ts      one export per project
+content/
+  site.ts            name, headline, links, work, books, hobbies,
+                     chess username, Duolingo streak
+  projects/
+    types.ts         Project, ProjectPage, Preview, Hero, ...
+    index.ts         projects (homepage order) · pageProjects · projectsBySlug
+    <slug>.ts        one export per project
 ```
 
-### Adding a project
+### Projects
 
-1. Write `content/projects/<slug>.ts` exporting a `ProjectContent`.
-2. Import it in `index.ts`, add it to `projectsBySlug` **and** `projectOrder`.
-3. Drop images in `public/projects/` (see the image rules below).
-4. `npm run build` — `/projects/<slug>` is generated from
-   `generateStaticParams`, so a broken entry fails the build, not runtime.
+A `Project` has a `title`, `year`, the homepage `line`, and a `preview` (what
+shows beside the list while its row is hovered). Then one of:
 
-### Featured vs grid
+- `page` — it gets `/projects/<slug>`: a sentence or two, one hero photo or
+  video, at most six spec rows, a small image grid, links.
+- `externalUrl` — the row opens that site in a new tab and there is no page
+  (uQueue).
 
-`projectOrder` is a **curated** order, not chronological. Which project gets
-the large card is a separate, explicit decision: set `featured: true` on
-exactly one project. `featuredProject` resolves from that flag and
-`gridProjects` is everything else, so reordering the list never silently
-changes what's highlighted. The large card renders a "Featured project"
-eyebrow so its size reads as intentional rather than as "newest".
+To add one: write `content/projects/<slug>.ts`, add it to the `projects` array
+in `index.ts`, and put images in `public/projects/`. `npm run build` generates
+the page, so a broken entry fails the build.
 
-### Placeholders
+**Never invent a spec, number, or result.** Every figure on the site is a real
+measurement.
 
-A string starting with `[TODO ...]` is a placeholder — `lib/placeholder.ts`
-detects it and the UI degrades gracefully (a "media pending" panel instead of
-a broken image, italic grey text instead of a fake claim). Use this for
-content that genuinely isn't ready yet; **never invent a spec, number, or
-result to fill a gap.** Every figure on the site is a real measurement.
+### Previews
+
+- A good photo or video: `type: "image"` or `"video"`.
+- A weak photo (breadboards, mostly): draw a white line SVG instead and use
+  `type: "drawing"`. They live in `public/projects/drawings/`, share a
+  400 × 300 viewBox, and use only `#EDEDED`, `#8C8C8C` and `#4A4A50` strokes.
+  Draw something true about the project (its waveform, its readout), with real
+  numbers if it carries any.
+
+### Live numbers
+
+`lib/live.ts`. The chess rating is fetched from chess.com's public API, at
+most once an hour, and falls back to a plain link if the fetch fails. Duolingo
+has no public API, so the streak counts up one a day from the date and count
+in `content/site.ts`; reset those if the streak breaks.
 
 ## Images
 
 `public/projects/`, referenced by absolute path (`/projects/foo.png`).
 
-**The gallery and cards crop with `object-cover`, so aspect ratio matters:**
-
-- `MediaGallery` figures render in a **16:9** box. Pad diagrams, plots, and
-  screenshots to 16:9 before committing them, otherwise the crop eats axis
-  labels and titles. Trim the dead border first, then pad — don't just letterbox
-  a small image inside a big canvas.
-- `ProjectHero` uses `object-contain` in 16:9, so it never crops.
-- Project card previews crop to roughly 1.47:1 (featured) and 16:10 (grid), so
-  a 16:9 source needs a little side margin to survive both.
-- Video heroes must supply a `poster`; cards render the poster so a grid never
-  autoplays several videos at once.
+- The image grid on a project page crops to **16:9** with `object-cover`. Pad
+  diagrams, plots, and screenshots to 16:9 before committing them, otherwise
+  the crop eats axis labels and titles.
+- A hero declares its shape in `aspect`; pick the one closest to the file.
+- Homepage previews crop to **4:3**. Use `preview.position` (a Tailwind
+  `object-*` class) when the subject is off-centre.
+- A video must supply a `poster`.
 
 If a figure looks cropped in dev after you replace a file, clear Next's image
 cache — `rm -rf .next/cache/images`. It keys on URL, not file contents.
 
 ## Code conventions
 
-- Server components by default. `"use client"` only for state, effects, or
-  handlers (`ProjectCard`, `MediaGallery`, `SectionHeader`, `Hero`).
+- Server components by default. `"use client"` only for state or browser APIs
+  (`ProjectList`, `LocalTime`).
 - Tailwind utilities only — no inline `style`, no CSS modules. Merge conditional
   classes with `cn()` from `lib/utils.ts`.
-- Components stay small and single-purpose: `components/sections/` for homepage
-  bands, `components/project/` for detail-page blocks, `components/ui/` for
-  shared primitives.
-- Prefer extending `ProjectContent` over adding per-project special cases in
-  components.
+- Keep it lean — no new dependency without a real reason.
 
 ## Routes
 
 | Route | Notes |
 |---|---|
-| `/` | Hero · Projects · Contact · Footer |
-| `/projects/[slug]` | SSG from `generateStaticParams` |
-| `/resume` | embeds `public/resume.pdf`; filename-agnostic, so swapping the PDF needs no code change |
-| `/api/contact` | Resend, needs `RESEND_API_KEY` |
+| `/` | re-rendered at most hourly, for the chess rating and streak |
+| `/projects/[slug]` | SSG from `generateStaticParams`, projects with a `page` |
+| `/resume` | embeds `public/resume.pdf`; swapping the PDF needs no code change |
 | `/opengraph-image`, `/icon.svg` | generated social preview and favicon |
 
 ## Notes
 
 - Mobile-first; verify 375 / 768 / 1440 on layout changes.
-- Keep it lean — no new dependency without a real reason.
-- `.env.local` holds `RESEND_API_KEY` and is gitignored. Never commit secrets.
+- `.env*` is gitignored. Never commit secrets.
