@@ -1,55 +1,36 @@
-import type { ProjectContent } from "./types";
-import { pedestrianDeadReckoning } from "./pedestrian-dead-reckoning";
+import type { Project } from "./types";
 import { keyboardPcb } from "./keyboard-pcb";
+import { uqueue } from "./uqueue";
+import { pedestrianDeadReckoning } from "./pedestrian-dead-reckoning";
 import { reflowOvenController } from "./reflow-oven-controller";
 import { fieldFollowingRobot } from "./field-following-robot";
+import { acPhasorVoltmeter } from "./ac-phasor-voltmeter";
 import { batteryTempMonitorPcb } from "./battery-temp-monitor-pcb";
 import { fpgaTron } from "./fpga-tron";
 import { embeddedAlarmClock } from "./embedded-alarm-clock";
-import { acPhasorVoltmeter } from "./ac-phasor-voltmeter";
 import { capacitanceMeters } from "./capacitance-meters";
 
-export const projectsBySlug: Record<string, ProjectContent> = {
-  [pedestrianDeadReckoning.slug]: pedestrianDeadReckoning,
-  [keyboardPcb.slug]: keyboardPcb,
-  [reflowOvenController.slug]: reflowOvenController,
-  [fieldFollowingRobot.slug]: fieldFollowingRobot,
-  [batteryTempMonitorPcb.slug]: batteryTempMonitorPcb,
-  [fpgaTron.slug]: fpgaTron,
-  [embeddedAlarmClock.slug]: embeddedAlarmClock,
-  [acPhasorVoltmeter.slug]: acPhasorVoltmeter,
-  [capacitanceMeters.slug]: capacitanceMeters,
-};
-
-// Curated display order — not strictly chronological. The featured project is
-// lifted out of this list into the large card, so the first entry that isn't
-// featured leads the compact grid.
-export const projectOrder: string[] = [
-  keyboardPcb.slug,
-  pedestrianDeadReckoning.slug,
-  reflowOvenController.slug,
-  fieldFollowingRobot.slug,
-  batteryTempMonitorPcb.slug,
-  fpgaTron.slug,
-  embeddedAlarmClock.slug,
-  acPhasorVoltmeter.slug,
-  capacitanceMeters.slug,
+// Curated display order for the homepage list, not strictly chronological.
+// The first project's preview is the one showing before anything is hovered.
+export const projects: Project[] = [
+  keyboardPcb,
+  uqueue,
+  pedestrianDeadReckoning,
+  reflowOvenController,
+  fieldFollowingRobot,
+  acPhasorVoltmeter,
+  batteryTempMonitorPcb,
+  fpgaTron,
+  embeddedAlarmClock,
+  capacitanceMeters,
 ];
 
-export const allProjects: ProjectContent[] = projectOrder.map(
-  (slug) => projectsBySlug[slug]
+// Projects with a page of their own at /projects/<slug>. A project that only
+// links out (externalUrl) is in the homepage list but not here.
+export const pageProjects = projects.filter((project) => project.page);
+
+export const projectsBySlug: Record<string, Project> = Object.fromEntries(
+  projects.map((project) => [project.slug, project])
 );
 
-// The large card at the top of the Projects section. Resolved from the
-// `featured` flag rather than list position, so highlighting a project is a
-// deliberate choice instead of a side effect of reordering. Falls back to the
-// first project if nothing is flagged.
-export const featuredProject: ProjectContent =
-  allProjects.find((project) => project.featured) ?? allProjects[0];
-
-// Everything else, in display order, rendered as the compact grid below it.
-export const gridProjects: ProjectContent[] = allProjects.filter(
-  (project) => project !== featuredProject
-);
-
-export type { ProjectContent } from "./types";
+export type { Project } from "./types";
