@@ -54,6 +54,11 @@ export interface Project {
   year: string;
   /** The one line shown next to the title on the homepage. */
   line: string;
+  /**
+   * Three to five skills shown under the line. Use the words a job posting
+   * would use (PCB design, Embedded C, Python), not part numbers or features.
+   */
+  skills: string[];
   preview: Preview;
   /** Omit for a project that lives on its own site; set `externalUrl` instead. */
   page?: ProjectPage;

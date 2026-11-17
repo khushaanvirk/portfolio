@@ -58,7 +58,13 @@ export default async function Home() {
 
         <Section title="Work">
           {site.work.map((job) => (
-            <Row key={job.name} name={job.name} detail={job.role} note={job.when} />
+            <Row
+              key={job.name}
+              name={job.name}
+              detail={job.role}
+              note={job.when}
+              skills={job.skills}
+            />
           ))}
         </Section>
 

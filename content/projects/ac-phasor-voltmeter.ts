@@ -5,6 +5,7 @@ export const acPhasorVoltmeter: Project = {
   title: "AC phasor voltmeter",
   year: "2026",
   line: "Reads RMS, phase and power factor",
+  skills: ["Embedded C", "ADC", "Signal processing"],
   preview: {
     type: "drawing",
     src: "/projects/drawings/phasor.svg",

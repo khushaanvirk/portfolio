@@ -5,6 +5,7 @@ export const embeddedAlarmClock: Project = {
   title: "Alarm clock",
   year: "2025",
   line: "8051 assembly, with snooze",
+  skills: ["Assembly", "Microcontrollers", "Interrupts"],
   preview: {
     type: "drawing",
     src: "/projects/drawings/clock.svg",

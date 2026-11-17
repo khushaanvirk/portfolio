@@ -5,6 +5,7 @@ export const capacitanceMeters: Project = {
   title: "Capacitance meters",
   year: "2025",
   line: "One on EFM8, one on STM32",
+  skills: ["Embedded C", "STM32", "Analog circuits"],
   preview: {
     type: "drawing",
     src: "/projects/drawings/cap.svg",

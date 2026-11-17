@@ -5,6 +5,7 @@ export const fieldFollowingRobot: Project = {
   title: "Field-following robot",
   year: "2026",
   line: "Follows a guide wire, team of 6",
+  skills: ["Embedded C", "STM32", "I2C", "Motor control"],
   preview: {
     type: "image",
     src: "/projects/robot.jpg",
